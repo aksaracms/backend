@@ -14,9 +14,9 @@ import (
 
 // Database credentials
 const (
-	DBUsername = "root"
-	DBPassword = ""
-	DBName     = "weblat"
+	DBUsername = "DB_USERNAME"
+	DBPassword = "DB_PASSWORD"
+	DBName     = "DB_NAME"
 )
 
 var db *sql.DB
@@ -51,7 +51,7 @@ type ContactEntry struct {
 
 func init() {
 	// Connect to the database
-	connStr := fmt.Sprintf("%s:%s@/%s", DBUsername, DBPassword, DBName)
+	connStr := fmt.Sprintf("%s:%s@/%s", getEnv("DB_USERNAME", "root"), getEnv("DB_PASSWORD", ""), getEnv("DB_NAME", "weblat"))
 	var err error
 	db, err = sql.Open("mysql", connStr)
 	if err != nil {
@@ -60,6 +60,14 @@ func init() {
 
 	// Initialize the template
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
+}
+
+func getEnv(key, defaultValue string) string {
+	value, exists := os.LookupEnv(key)
+	if exists {
+		return value
+	}
+	return defaultValue
 }
 
 func main() {
