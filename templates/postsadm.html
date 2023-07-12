@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">My Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/home" class="btn btn-primary">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/post/create" class="btn btn-primary">Create Post</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Posts</h1>
+        {{range .}}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{.Title}}</h5>
+                    <p class="card-text">{{.Content}}</p>
+                    <a href="/post/edit?id={{.ID}}" class="btn btn-primary">Edit</a>
+                    <form action="/post/delete" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="{{.ID}}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        {{end}}
+    </div>
+</body>
+</html>

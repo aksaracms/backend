@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		.container {
+			margin-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Registration</h1>
+		<form action="/register" method="POST">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" id="name" name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" class="form-control" id="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="username">Username:</label>
+				<input type="text" class="form-control" id="username" name="username" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" id="password" name="password" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Register</button>
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
